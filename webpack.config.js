@@ -1,8 +1,12 @@
 const path = require('path');
 
 module.exports = {
+  devServer: {
+    publicPath: '/public/',
+    historyApiFallback: true
+  },
   context: __dirname,
-  entry: './js/ClientApp.js',
+  entry: './js/ClientApp.jsx',
   devtool: 'source-map',
   output: {
     path: path.join(__dirname, 'public'),
@@ -18,6 +22,12 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      },
       {
         test: /\.jsx?$/,
         loader: 'babel-loader'
