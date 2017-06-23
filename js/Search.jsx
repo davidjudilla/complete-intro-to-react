@@ -1,17 +1,18 @@
+// @flow
+
 import React from 'react';
-import preload from '../data.json';
 import ShowCard from './ShowCard';
 
 class Search extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	state = {
 		searchTerm: ''
 	};
 
-	handleSearchChange = e => {
+	props: {
+		shows: Array<Show>
+	};
+
+	handleSearchChange = (e: SyntheticKeyboardEvent & { target: HTMLInputElement }) => {
 		this.setState({
 			searchTerm: e.target.value
 		});
@@ -30,7 +31,7 @@ class Search extends React.Component {
 					/>
 				</header>
 				<div>
-					{preload.shows
+					{this.props.shows
 						.filter(
 							show =>
 								`${show.title} ${show.description}`

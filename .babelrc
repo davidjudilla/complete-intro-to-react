@@ -1,6 +1,7 @@
 {
   "plugins": [
-    "babel-plugin-transform-class-properties"
+    "babel-plugin-transform-class-properties",
+    "react-hot-loader/babel"
   ],
   "presets": [
     "react",
@@ -9,7 +10,13 @@
         "browsers": "last 2 versions"
       },
       "loose": true,
-      "modules": false
+      "modules": false,
+      "jest": true
     }]
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    }
+  }
 }
